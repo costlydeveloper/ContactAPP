@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "contactapp-39910": {
+      "hosting": {
+        "ContactAPP": [
+          "contactapp-39910"
+        ]
+      }
+    }
+  }
+}

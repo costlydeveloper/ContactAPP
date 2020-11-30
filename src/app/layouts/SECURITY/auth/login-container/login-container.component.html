@@ -1,0 +1,30 @@
+<!--[@enterDialogAnimation]-->
+<div *ngIf="contentIsReady">
+    
+    <div class="login-page">
+        <div class="signup-form">
+            <div class="form-wrapper">
+                
+                <div class="row justify-content-center">
+                    
+                    <div class="col-md-12">
+                        <app-login-form
+                                (formObjectOutput)="formDataCollect($event)"
+                                [formObjectInput]="this.coreContainer.ContainerInputData.Credentials"
+                                [validationObjectInput]="credentialsValidatorList"
+                        ></app-login-form>
+                        
+                        <div class="form-group">
+                            <button class="btn btn-primary btn-block btn-lg" type="submit" (click)="onSubmit()">Sign In</button>
+                        </div>
+                        <p class="small text-center">By clicking the Sign In button, you agree to use this awesome app.</p>
+                    
+                    </div>
+                
+                </div>
+            
+            </div>
+        
+        </div>
+    </div>
+</div>

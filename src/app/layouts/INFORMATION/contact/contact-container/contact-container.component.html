@@ -1,0 +1,13 @@
+<div *ngIf="contentIsReady" [@enterDialogAnimation]>
+    
+    <div class="form-wrapper">
+        
+        <app-contact-form
+                (formObjectOutput)="formDataCollect($event)"
+                [formObjectInput]="coreContainer.ContainerInputData.Contact"
+                [validationObjectInput]="contactValidatorList"
+                [contactCategoryList]="coreContainer.FormData.ContactCategoryList"
+        ></app-contact-form>
+    
+    </div>
+</div>

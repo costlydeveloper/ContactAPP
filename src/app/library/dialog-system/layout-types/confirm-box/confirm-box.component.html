@@ -1,0 +1,48 @@
+<div class="confirm-inner-wrapper">
+    
+    <div class="dont-break-out" [ngClass]="{'text-wrapper-section-with-icon': showIcon, 'text-wrapper-section': !showIcon}">
+        <div class="text-wrapper dont-break-out"><h3>{{dialogData.Title}}</h3></div>
+        <div class="text-wrapper dont-break-out"><p>{{dialogData.Description}}</p></div>
+    </div>
+    
+    <div class="icon-section" *ngIf="showIcon">
+        <i
+                class="icon-type-dialog fa fa-3x" [ngClass]="{
+          'text-success fa-check-circle success-dialog': dialogConfig.ColorType === 2,
+          'text-info fa-info-circle info-dialog': dialogConfig.ColorType === 3,
+          'text-warning fa-exclamation-circle warning-dialog': dialogConfig.ColorType === 4,
+          'text-danger fa-times-circle error-dialog': dialogConfig.ColorType === 5
+        }"
+        ></i>
+    </div>
+
+</div>
+
+<div class="actions" *ngIf="!this.dialogConfig.AlertBox">
+    <button class="btn btn-secondary mr-1" (click)="onClose()">Cancel</button>
+    <button
+            class="btn mr-1" (click)="onConfirm()"
+            [ngClass]="{
+          'btn-primary': dialogConfig.ColorType === 1,
+          'btn-success': dialogConfig.ColorType === 2,
+          'btn-info': dialogConfig.ColorType === 3,
+          'btn-warning': dialogConfig.ColorType === 4,
+          'btn-danger': dialogConfig.ColorType === 5
+        }"
+    >Confirm
+    </button>
+</div>
+
+<div class="actions" *ngIf="this.dialogConfig.AlertBox">
+    <button
+            class="btn mr-1" (click)="onClose()"
+            [ngClass]="{
+          'btn-primary': dialogConfig.ColorType === 1,
+          'btn-success': dialogConfig.ColorType === 2,
+          'btn-info': dialogConfig.ColorType === 3,
+          'btn-warning': dialogConfig.ColorType === 4,
+          'btn-danger': dialogConfig.ColorType === 5
+        }"
+    >OK
+    </button>
+</div>

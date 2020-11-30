@@ -1,0 +1,78 @@
+@import 'variables';
+
+.btn, .btn:active {
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  }
+
+.btn-primary, btn-primary:hover {
+  color: $white !important;
+  }
+
+.btn-secondary, btn-secondary:hover {
+  color: $white !important;
+  }
+
+.btn-success, btn-success:hover {
+  color: $white !important;
+  }
+
+.button-group-left button {
+  margin-right: 5px;
+
+  &:last-child {
+    margin-right: 0;
+    }
+  }
+
+.button-group-right button {
+  margin-left: 5px;
+
+  &:first-child {
+    margin-left: 0;
+    }
+
+  }
+
+.btn-circle.btn-light {
+  color: $gray-600;
+  }
+
+.btn-circle.btn-ico {
+  font-size: 14px;
+  width: 30px;
+  height: 30px;
+  margin: 0 3px;
+  padding: 3px 0;
+  text-align: center;
+  border-radius: 15px;
+  }
+
+.btn-circle.btn-sm {
+  font-size: 8px;
+  width: 30px;
+  height: 30px;
+  padding: 6px 0px;
+  text-align: center;
+  border-radius: 15px;
+  }
+
+.btn-circle.btn-md {
+  font-size: 10px;
+  width: 50px;
+  height: 50px;
+  padding: 7px 10px;
+  text-align: center;
+  border-radius: 25px;
+  }
+
+.btn-circle.btn-xl {
+  font-size: 12px;
+  width: 70px;
+  height: 70px;
+  padding: 10px 16px;
+  text-align: center;
+  border-radius: 35px;
+  }

@@ -1,0 +1,53 @@
+<div *ngIf="contentIsReady">
+    
+    <div class=" container">
+        
+        <div class="row">
+            
+            <div class="col-md-12">
+                <div class="header-default">
+                    <h4 class="font-weight-light">Contact form</h4>
+                </div>
+            </div>
+        
+        </div>
+        
+        <div class="form-wrapper wrapper-block-page">
+            
+            <div class="row">
+                
+                <div class="col-md-6">
+                    <p class="text-center">Person</p>
+                    <app-person-form
+                            (formObjectOutput)="formDataCollect($event)"
+                            [formObjectInput]="this.coreContainer.ContainerInputData.PersonContact"
+                            [validationObjectInput]="personValidatorList"
+                    >
+                    </app-person-form>
+                </div>
+                
+                <div class="col-md-6">
+                    <p class="text-center">Contact</p>
+                    <div class="snippet-list-wrapper">
+                        <div class="button-group-left">
+                            <button class="btn btn-primary btn-sm" (click)="onModifyCreateContact('create')"><i class="fa fa-plus"> Add contact</i></button>
+                        </div>
+                        <app-snippet-contact-list [triggerChange]="triggerSnippetContactListChange" [contactList]="coreContainer.ContainerInputData.PersonContact.ContactList"></app-snippet-contact-list>
+                    </div>
+                </div>
+            
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-md-12">
+                    <div class="form-group  text-right">
+                        <button class="btn btn-primary btn-lg" type="submit" *ngIf="this.inputData.Mode === 'edit'" (click)="onEdit()">Save</button>
+                        <button class="btn btn-primary btn-lg" type="submit" *ngIf="this.inputData.Mode === 'create'" (click)="onCreate()">Create</button>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    
+    </div>
+</div>

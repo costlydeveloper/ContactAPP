@@ -1,0 +1,41 @@
+<div class="form-container">
+    
+    <form #form="ngForm" #formNative autocomplete="off">
+        
+        <div class="row mb-2">
+            
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="form-box validation-element">
+                        <label data-validation-property="ContactCategoryID">Choose contact type</label>
+                        <p-dropdown
+                                placeholder="Select type"
+                                dataKey="ID"
+                                optionLabel="Title"
+                                name="ContactCategoryID"
+                                [showClear]="true"
+                                [(ngModel)]="contactCategory"
+                                [options]="contactCategoryList"
+                                [style]="{'width':'100%'}"
+                                (onChange)="formObjectInput.ContactCategoryID = $event.value.ID"
+                        >
+                        </p-dropdown>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mb-2">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <div class="form-box validation-element" *ngIf="contactCategory">
+                        <label>{{contactCategory?.Title}}</label>
+                        <input class="form-control" type="text" pInputText [(ngModel)]="formObjectInput.Title" data-validation-property="Title" name="Title" [placeholder]="'Enter '+ contactCategory?.Title.toLowerCase() + ' contact...'">
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    
+    </form>
+
+</div>

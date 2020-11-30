@@ -1,0 +1,37 @@
+<div
+        class="alert" [ngClass]="{
+          '': type === 0 || type === 6,
+          'alert-primary': type === 1,
+          'alert-success': type === 2,
+          'alert-info': type === 3,
+          'alert-warning': type === 4,
+          'alert-danger': type === 5,
+          'alert-dark': type === 7,
+          'alert-light': type === 8,
+          'alert-secondary': type === 9
+        }"
+>
+    
+    <div class="row">
+        <div class="col-md-1">
+            <div class="icon-section" *ngIf="showIcon || customIcon">
+                <i
+                        class="fa fa-2x" *ngIf="showIcon && !customIcon" [ngClass]="{
+                  'fa-comment fa-flip-horizontal': type === 0 || type === 1 || type === 6 || type === 7 || type === 8 || type === 9,
+                  'fa-check-circle': type === 2,
+                  'fa-info-circle': type === 3,
+                  'fa-exclamation-circle': type === 4,
+                  'fa-times-circle': type === 5
+                }"
+                ></i>
+                <i class="fa-2x" *ngIf="customIcon" [ngClass]="customIcon"></i>
+            </div>
+        </div>
+        <div class="col-md-11 content-wrapper">
+            <span class="content">{{content}}</span>
+        
+        </div>
+    </div>
+
+</div>
+

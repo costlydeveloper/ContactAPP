@@ -1,0 +1,80 @@
+<div class="container">
+    
+    <div class="row">
+        
+        <div class="col-md-12">
+            <div class="header-default">
+                <button class="btn btn-primary" (click)="coreList.modifyCreate('create')"><i class="fa fa-plus"></i> Contact</button>
+                <h4 class="font-weight-light">Contact list</h4>
+            </div>
+        </div>
+    
+    </div>
+    
+    <div class="form-wrapper wrapper-block-page">
+        
+        <div class="row mb-2">
+            
+            <div class="col-md-12">
+                
+                <p-table #table [paginator]="true" [rows]="row" [sortOrder]="-1" [value]="PersonContactList">
+                    <ng-template pTemplate="caption">
+                        <div class="text-right">
+                            <i class="fa fa-search"></i>
+                            <input class="filter" type="text" pInputText size="30" placeholder="Search" (keyup)="myFilter($event.target.value)">
+                            <p-dropdown *ngIf="PersonContactList.length > 15" [(ngModel)]="row" [options]="rowNumber" placeholder="">
+                            </p-dropdown>
+                        </div>
+                    </ng-template>
+                    <ng-template pTemplate="header">
+                        
+                        <tr>
+                            <th class="w-200px" pSortableColumn="Surname">
+                                Surname
+                                <p-sortIcon field="Surname"></p-sortIcon>
+                            </th>
+                            <th class="w-150px">
+                                Name
+                            </th>
+                            <th class="w-100">
+                                Contacts
+                            </th>
+                            <th class="w-120px"></th>
+                        </tr>
+                    
+                    </ng-template>
+                    
+                    <ng-template let-item let-i="rowIndex" pTemplate="body">
+                        
+                        <tr [pSelectableRow]="item">
+                            <td>
+                                <div>
+                                    {{item.Surname}}
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {{item.Name}}
+                                </div>
+                            </td>
+                            <td>
+                                <div class="text-center">
+                                    {{item.ContactList.length}}
+                                </div>
+                            </td>
+                            <td>
+                                <button class="btn-light btn btn-circle btn-ico" pRipple (click)="coreList.modifyCreate('edit', item)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                                <button class="btn-light btn btn-circle btn-ico" pRipple (click)="coreList.remove(item)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                            </td>
+                        
+                        </tr>
+                    
+                    </ng-template>
+                
+                </p-table>
+            </div>
+        
+        </div>
+    
+    </div>
+</div>

@@ -1,0 +1,59 @@
+@import '../../../../styles/pre-import';
+
+.overlay-toast {
+  position: relative;
+  z-index: 0 !important;
+  margin: 0;
+  padding: 0;
+  opacity: 0;
+  background: transparent;
+  // backdrop-filter: blur(10px);
+
+  .component-content {
+    transition: none !important;
+    }
+
+  .is-toast {
+    position: relative;
+    order: 2;
+    width: 250px !important;
+    max-width: 350px;
+    margin-top: 10px;
+    margin-left: auto;
+    padding: 0 !important;
+    border-top: 0 solid;
+    border-right: 4px solid;
+    border-radius: 5px;
+    background-color: transparent;
+    box-shadow: 3px 11px 15px rgba(0, 0, 0, 0.11), 3px 6px 10px rgba(0, 0, 0, 0.22);
+    backdrop-filter: blur(10px);
+
+
+    &.standard-dialog {
+      border-color: transparent;
+      }
+
+    &.success-dialog {
+      border-color: $success;
+      background-color: lighten($success, 45%);;
+      }
+
+    &.info-dialog {
+      border-color: $info;
+      background-color: lighten($info, 40%);;
+      }
+
+    &.warning-dialog {
+      border-color: $warning;
+      background-color: lighten($warning, 40%);
+      }
+
+    &.error-dialog {
+      border-color: $danger;
+      background-color: lighten($danger, 25%);;
+      }
+
+    }
+  }
+
+

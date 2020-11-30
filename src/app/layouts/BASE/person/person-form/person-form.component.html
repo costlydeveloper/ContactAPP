@@ -1,0 +1,47 @@
+<div class="form-container">
+    
+    <form #form="ngForm" #formNative autocomplete="off">
+        
+        <div class="row col-space">
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="form-box validation-element">
+                        <label>Surname</label>
+                        <input class="form-control" type="text" [(ngModel)]="formObjectInput.Surname" data-validation-property="Surname" name="Surname" placeholder="Enter surname...">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="form-box validation-element">
+                        <label>Name</label>
+                        <input class="form-control" type="text" [(ngModel)]="formObjectInput.Name" data-validation-property="Name" name="Name" placeholder="Enter name...">
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+        
+        <div class="row col-space mb-2">
+            
+            <div class="col-md-6">
+                <div class="form-group">
+                    <div class="form-box validation-element">
+                        <label>Birth date</label>
+                        <p-calendar name="BirthDate" dateFormat="dd.mm.yy." [monthNavigator]="true" [yearNavigator]="true" yearRange="1900:2020" placeholder="Choose birth date..." [(ngModel)]="formObjectInput.BirthDate"></p-calendar>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6">
+            
+            </div>
+        
+        </div>
+    
+    </form>
+
+</div>
+

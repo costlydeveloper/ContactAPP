@@ -1,0 +1,22 @@
+<p-table #table [value]="contactList" [paginator]="true" [rows]="5">
+    <ng-template pTemplate="body" let-contact>
+        <tr>
+            <td class="w-20px">
+                <span tooltipPosition="top"><i
+                        class="fa" aria-hidden="true" [ngClass]="{
+                  'fa-mobile fa-2x': contact.ContactCategoryID === 1,
+                  'fa-phone': contact.ContactCategoryID === 2,
+                  'fa-envelope-o': contact.ContactCategoryID === 3,
+                  'fa-address-card-o':contact.ContactCategoryID === 4
+                }"
+                ></i></span>
+            </td>
+            <td>{{contact.Title}}</td>
+            <td class="w-120px">
+                <button class="btn-light btn btn-circle btn-ico" pRipple (click)="onModifyContact(contact)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                <button class="btn-light btn btn-circle btn-ico" pRipple><i class="fa fa-trash" aria-hidden="true"></i></button>
+            </td>
+        
+        </tr>
+    </ng-template>
+</p-table>

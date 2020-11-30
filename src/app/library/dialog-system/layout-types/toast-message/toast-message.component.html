@@ -1,0 +1,55 @@
+<!--<editor-fold desc="*** Header ***">-->
+
+<div class="toast-header">
+    <strong class="mr-auto">{{dialogData.Title}}</strong>
+    <div class="floatright cursor-pointer" (click)="onClose()">
+        <i class="fa fa-times-circle"></i>
+    </div>
+</div>
+
+<!--</editor-fold>-->
+
+<!--<editor-fold desc="*** body ***">-->
+
+<div class="toast-body">
+    
+    <p>{{dialogData.Description}}</p>
+    
+    <div class="actions" *ngIf="this.dialogConfig.ShowButtons && this.dialogConfig.CustomButtonList.length > 0">
+        <button
+                class="btn btn-sm" *ngFor="let button of dialogConfig.CustomButtonList" (click)="onCustomButton(button)"
+                [ngClass]="{
+          'btn-primary': (button.ColorType ? (button.ColorType === 1) : (dialogConfig.ColorType === 1)),
+          'btn-success': (button.ColorType ? (button.ColorType === 2) : (dialogConfig.ColorType === 2)),
+          'btn-info': (button.ColorType ? (button.ColorType === 3) : (dialogConfig.ColorType === 3)),
+          'btn-warning': (button.ColorType ? (button.ColorType === 4) : (dialogConfig.ColorType === 4)),
+          'btn-danger': (button.ColorType ? (button.ColorType === 5) : (dialogConfig.ColorType === 5)),
+          '': (button.ColorType ? (button.ColorType === 6) : (dialogConfig.ColorType === 6)),
+          'btn-dark': (button.ColorType ? (button.ColorType === 7) : (dialogConfig.ColorType === 7)),
+          'btn-light': (button.ColorType ? (button.ColorType === 8) : (dialogConfig.ColorType === 8)),
+          'btn-link': (button.ColorType ? (button.ColorType === 9) : (dialogConfig.ColorType === 9)),
+          'btn-secondary': (button.ColorType ? (button.ColorType === 10) : (dialogConfig.ColorType === 10))
+        }"
+        >{{button.Title}}
+        </button>
+    </div>
+    
+    <div class="actions" *ngIf="this.dialogConfig.ShowButtons && this.dialogConfig.CustomButtonList.length === 0">
+        <button
+                class="btn btn-sm" (click)="onClose()"
+                [ngClass]="{
+          'btn-primary': dialogConfig.ColorType === 1,
+          'btn-success': dialogConfig.ColorType === 2,
+          'btn-info': dialogConfig.ColorType === 3,
+          'btn-warning': dialogConfig.ColorType === 4,
+          'btn-danger': dialogConfig.ColorType === 5
+        }"
+        >OK
+        </button>
+    </div>
+</div>
+
+<!--</editor-fold>-->
+
+
+

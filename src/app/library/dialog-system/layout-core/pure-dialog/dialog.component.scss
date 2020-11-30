@@ -1,0 +1,143 @@
+@import '../../../../styles/pre-import';
+
+.overlay {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  opacity: 0;
+  background: transparentize(darken($primary-color, 40), 0.6);
+  }
+
+.icon-type-dialog {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  padding: 4px;
+  border-radius: 13px 13px 0 0;
+  }
+
+.in-buttons {
+  padding: 20px 20px 20px 20px !important;
+  }
+
+.dialog {
+  /*box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.22);*/
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 20px 80px 20px;
+  border-top: 7px solid;
+  border-radius: 5px;
+  background: #fbfbfb;
+  box-shadow: 0 0 4px 1px transparentize($black, 0.75);
+
+  &.standard-dialog {
+    border-color: transparent;
+    }
+
+  &.success-dialog {
+    border-color: $success;
+    }
+
+  &.info-dialog {
+    border-color: $info;
+    }
+
+  &.warning-dialog {
+    border-color: $warning;
+    }
+
+  &.error-dialog {
+    border-color: $danger;
+    }
+
+  .component-content {
+    transition-delay: .4s;
+    transition-timing-function: linear;
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    }
+
+  .component-content-loader-off {
+    transition: none !important;
+    opacity: 1 !important;
+    }
+
+  .component-content-preparing {
+    transition: none !important;
+    opacity: 0;
+    }
+
+  .component-content-ready {
+    height: 100%;
+    opacity: 1;
+    }
+
+  .dialog-loader {
+    position: relative;
+    top: 47%;
+    display: table-footer-group;
+    transition-delay: .4s;
+    transition-timing-function: linear;
+    transition-duration: 0.4s;
+    transition-property: opacity;
+    opacity: 1;
+    }
+
+  .dialog-loader-off {
+    display: none;
+    opacity: 0 !important;
+    }
+
+  .dialog-loader-gone {
+    opacity: 0;
+
+    }
+
+  .dialog-loader-active {
+    opacity: 1;
+
+    }
+
+  }
+
+.overlay-disabled {
+  position: fixed;
+  z-index: 0 !important;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  align-items: unset;
+  flex-direction: unset;
+  justify-content: unset;
+  background: transparent;
+  // pointer-events: none;
+  }
+
+.actions {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  display: block;
+  width: 100%;
+  padding: 15px 25px;
+  border-bottom-right-radius: 6px;
+  border-bottom-left-radius: 6px;
+  background: #ffffff;
+  box-shadow: 0 -1px 2px #e9e9e9;
+
+  .action-button {
+    margin-left: 5px;
+    }
+  }
+
+

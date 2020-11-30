@@ -1,0 +1,26 @@
+[
+  {
+    "ID": 1,
+    "Title": "Mobile phone",
+    "EnumName": "MOBILE_PHONE",
+    "IsActive": true
+  },
+  {
+    "ID": 2,
+    "Title": "Fixed phone",
+    "EnumName": "FIXED_PHONE",
+    "IsActive": true
+  },
+  {
+    "ID": 3,
+    "Title": "E-mail",
+    "EnumName": "EMAIL",
+    "IsActive": true
+  },
+  {
+    "ID": 4,
+    "Title": "Pager",
+    "EnumName": "PAGER",
+    "IsActive": true
+  }
+]

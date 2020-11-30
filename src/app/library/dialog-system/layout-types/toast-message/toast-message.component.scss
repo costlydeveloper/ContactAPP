@@ -1,0 +1,14 @@
+.toast-header {
+  border-radius: 5px 0 0 0;
+  }
+
+.actions {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  padding-top: 10px;
+
+  button {
+    margin-left: 5px;
+    }
+  }

@@ -1,0 +1,89 @@
+@import 'variables';
+
+.form-wrapper {
+  padding: 5px 10px;
+
+  .form-control, .form-control:focus, .input-group-addon {
+    border-color: $gray-300;
+    border-radius: 0;
+    box-shadow: none !important;
+    }
+
+  .input-group-addon {
+    max-width: 42px;
+    padding-left: 5px;
+    text-align: center;
+    border-bottom: 1px solid #e1e1e1;
+    background: none;
+    }
+
+  .form-control {
+    min-height: 38px;
+    border-width: 0 0 1px 0;
+    box-shadow: none !important;
+    }
+
+  .form-group {
+    margin-bottom: 20px;
+    }
+
+  .lead {
+    font-size: 14px;
+    margin-bottom: 30px;
+    text-align: center;
+    }
+
+  label {
+    font-size: 13px;
+    font-weight: normal;
+    }
+
+
+  }
+
+
+.form-box {
+
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  padding: 1px 10px 0px 10px;
+  transition: background-color 0.2s ease;
+  vertical-align: bottom;
+  border: 1px solid $gray-300;
+  border-radius: 3px;
+  background-color: $white;
+
+  label {
+    font-size: 14px;
+    font-weight: 500;
+    position: relative;
+    top: 4px;
+    width: 100%;
+    margin: 0;
+    text-transform: uppercase;
+    color: $primary-color;
+    }
+
+  .form-control {
+    border: 0;
+    }
+  }
+
+.validation-element {
+  // border: 2px solid transparent;
+  }
+
+.invalid-field {
+  border: 1px solid $red;
+
+  &::after {
+    border-color: inherit;
+    }
+
+  &:focus {
+    ~ .custom-file-label {
+      box-shadow: 0 0 0 .2rem rgba($red, 25%);
+      }
+    }
+  }

@@ -1,0 +1,26 @@
+<div class="overlay-toast" #overlayToast (dblclick)="onOverlayClicked($event)" [@fadeInOut]="fadeInOutAnimation">
+    
+    <div
+            class="is-toast" (click)="onDialogClicked($event)" [ngClass]="{
+          'standard-dialog': dialogConfig.ColorType === 1,
+          'success-dialog': dialogConfig.ColorType === 2,
+          'info-dialog': dialogConfig.ColorType === 3,
+          'warning-dialog': dialogConfig.ColorType === 4,
+          'error-dialog': dialogConfig.ColorType === 5
+        }"
+            [ngStyle]="{'width': dialogConfig.Width, 'height': dialogConfig.Height}"
+    >
+        
+        <main style="width: 100%; height: 100%;">
+            <div class="component-content" id="toast-container" #componentContainer>
+                <ng-template appInsertion></ng-template>
+            </div>
+        </main>
+    
+    </div>
+</div>
+
+
+
+
+

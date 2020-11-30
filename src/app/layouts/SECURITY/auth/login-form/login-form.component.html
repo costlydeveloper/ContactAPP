@@ -1,0 +1,20 @@
+<form #form="ngForm" #formNative autocomplete="off">
+    <h2>Sign in</h2>
+    <p class="lead">The Contact Master is waiting for you.</p>
+    
+    <div class="form-group">
+        <div class="input-group validation-element">
+            <span class="input-group-addon"><i class="fa fa-user"></i></span>
+            <input class="form-control" type="email" [(ngModel)]="formObjectInput.Username" data-validation-property="Username" name="Username" placeholder="Email Address">
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-group validation-element">
+            <span class="input-group-addon"><i class="fa fa-lock"></i></span>
+            <input class="form-control" type="text" [(ngModel)]="formObjectInput.Password" data-validation-property="Password" name="Password" placeholder="Password">
+        </div>
+    </div>
+
+</form>
+
+
