@@ -20,10 +20,16 @@
                 <p-table #table [autoLayout]="true" [paginator]="true" [rows]="row" [sortOrder]="-1" [value]="PersonContactList" [alwaysShowPaginator]="false">
                     <ng-template pTemplate="caption">
                         <div class="text-right">
-                            <i class="fa fa-search"></i>
-                            <input class="filter" type="text" pInputText size="30" placeholder="Search" (keyup)="myFilter($event.target.value)">
-                            <p-dropdown *ngIf="PersonContactList.length > row" [(ngModel)]="row" [options]="rowNumber">
-                            </p-dropdown>
+                            <div class="table-header">
+                                <div>
+                                    <i class="fa fa-search"></i>
+                                    <input class="filter" type="text" pInputText size="30" placeholder="Search" (keyup)="myFilter($event.target.value)">
+                                </div>
+                                <div class="choose-paginator" *ngIf="PersonContactList.length > row">
+                                    <p-dropdown [(ngModel)]="row" [options]="rowNumber" placeholder="">
+                                    </p-dropdown>
+                                </div>
+                            </div>
                         </div>
                     </ng-template>
                     <ng-template pTemplate="header">
