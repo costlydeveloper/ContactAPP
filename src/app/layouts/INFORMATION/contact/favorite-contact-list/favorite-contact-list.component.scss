@@ -1,0 +1,37 @@
+@import '../../../../styles/pre-import';
+
+.inline-content {
+  display: flex;
+  }
+
+.trim {
+  display: -webkit-box !important;
+  overflow: hidden !important;
+  margin: 0;
+  padding: 0;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical !important;
+  }
+
+.max-200 {
+  max-width: 200px;
+  }
+
+.min-100 {
+  min-width: 200px;
+  }
+
+.table-header {
+  display: flex;
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+  .choose-paginator {
+    border-left: 1px solid $gray-300
+    }
+  }

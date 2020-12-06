@@ -1,16 +1,22 @@
-import {Component, OnInit} from '@angular/core';
+import {Component} from '@angular/core';
+import {Router, RouterOutlet} from '@angular/router';
+import {content} from '../../library/animation/loder.animations';
 
 @Component({
     selector   : 'app-app-layout-frame',
     templateUrl: './app-layout-frame.component.html',
-    styleUrls  : ['./app-layout-frame.component.scss']
+    styleUrls  : ['./app-layout-frame.component.scss'],
+    animations : [content]
 })
-export class AppLayoutFrameComponent implements OnInit {
+export class AppLayoutFrameComponent {
     
-    constructor() {
+    contentState: string = 'active';
+    
+    constructor(private router: Router) {
     }
     
-    ngOnInit(): void {
+    public getRouterOutletState(outlet: RouterOutlet): any {
+        return outlet.isActivated ? outlet.activatedRoute : '';
     }
     
 }

@@ -11,70 +11,88 @@
     
     </div>
     
-    <div class="form-wrapper wrapper-block-page">
-        
+    <div class="wrapper-block-page relative-box">
+    
         <div class="row mb-2">
-            
+        
             <div class="col-md-12">
-                
-                <p-table #table [paginator]="true" [rows]="row" [sortOrder]="-1" [value]="PersonContactList">
+            
+                <p-table #table [autoLayout]="true" [paginator]="true" [rows]="row" [sortOrder]="-1" [value]="PersonContactList" [alwaysShowPaginator]="false">
                     <ng-template pTemplate="caption">
                         <div class="text-right">
-                            <i class="fa fa-search"></i>
-                            <input class="filter" type="text" pInputText size="30" placeholder="Search" (keyup)="myFilter($event.target.value)">
-                            <p-dropdown *ngIf="PersonContactList.length > 15" [(ngModel)]="row" [options]="rowNumber" placeholder="">
-                            </p-dropdown>
+                            <div class="table-header">
+                                <div>
+                                    <i class="fa fa-search"></i>
+                                    <input class="filter" type="text" pInputText size="30" placeholder="Search" (keyup)="myFilter($event.target.value)">
+                                </div>
+                                <div class="choose-paginator" *ngIf="PersonContactList.length > row">
+                                    <p-dropdown [(ngModel)]="row" [options]="rowNumber" placeholder="">
+                                    </p-dropdown>
+                                </div>
+                            </div>
                         </div>
                     </ng-template>
                     <ng-template pTemplate="header">
-                        
+    
                         <tr>
-                            <th class="w-200px" pSortableColumn="Surname">
-                                Surname
-                                <p-sortIcon field="Surname"></p-sortIcon>
+                            <th class="w-20" pSortableColumn="Surname">
+                                <div class="inline-content">
+                                    <div> Surname</div>
+                                    <div>
+                                        <p-sortIcon field="Surname"></p-sortIcon>
+                                    </div>
+                                </div>
                             </th>
-                            <th class="w-150px">
+                            <th class="w-20">
                                 Name
                             </th>
-                            <th class="w-100">
+                            <th class="w-20">
                                 Contacts
                             </th>
-                            <th class="w-120px"></th>
+                            <th class="w-40"></th>
                         </tr>
                     
                     </ng-template>
                     
                     <ng-template let-item let-i="rowIndex" pTemplate="body">
-                        
+    
                         <tr [pSelectableRow]="item">
-                            <td>
-                                <div>
+                            <td class="pointer table-link-color" [routerLink]="['/kontakt/detalji', item.ID]">
+                                <div class="trim max-200 min-100">
                                     {{item.Surname}}
                                 </div>
                             </td>
-                            <td>
-                                <div>
+                            <td class="pointer table-link-color" [routerLink]="['/kontakt/detalji', item.ID]">
+                                <div class="trim max-200 min-100">
                                     {{item.Name}}
                                 </div>
                             </td>
                             <td>
-                                <div class="text-center">
+                                <div>
                                     {{item.ContactList.length}}
                                 </div>
                             </td>
                             <td>
-                                <button class="btn-light btn btn-circle btn-ico" pRipple (click)="coreList.modifyCreate('edit', item)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                                <button class="btn-light btn btn-circle btn-ico" pRipple (click)="coreList.remove(item)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                <div class="button-wrapper">
+                                    <div class="btn-light btn btn-circle btn-ico" pRipple (click)="favorite(item)"><i [className]="(item.ID | favoriteExist : coreList.FavoriteRelationList) ? 'fa fa-star text-warning' : 'fa fa-star'" aria-hidden="true"></i></div>
+                                    <div class="btn-light btn btn-circle btn-ico" pRipple (click)="coreList.modifyCreate('edit', item)"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+                                    <div class="btn-light btn btn-circle btn-ico" pRipple (click)="coreList.remove(item)"><i class="fa fa-trash" aria-hidden="true"></i></div>
+                                </div>
                             </td>
-                        
+    
                         </tr>
-                    
+
                     </ng-template>
-                
+            
                 </p-table>
             </div>
-        
+    
         </div>
     
+        <div class="loader" [@loader]="loaderViewChange">
+            <!-- <app-default-loader></app-default-loader>-->
+            <app-page-loader></app-page-loader>
+        </div>
+
     </div>
 </div>

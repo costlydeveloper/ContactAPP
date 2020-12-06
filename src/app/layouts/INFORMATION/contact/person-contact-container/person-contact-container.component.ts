@@ -44,17 +44,20 @@ export class PersonContactContainerComponent extends LayoutAbstraction.Class.Con
     
     ngOnInit(): void {
         this.coreContainer.dataFetch().then(result => {
-            // dohvaćene su sve liste
-            // this.dialog.closeLoader(this.dialogData.CustomData.DialogConfig.DialogUniqueID);
             this.contentIsReady = true;
         });
-        
+    
     }
     
     formDataCollect(_ChangedObject: any): void {
         if (_ChangedObject instanceof INFORMATION.Class.Contact.PersonContact) {
             this.coreContainer.ContainerInputData.PersonContact = _ChangedObject;
         }
+    }
+    
+    updateContactList(_ContactList: INFORMATION.Interface.Contact.IBasic[]): void {
+        this.coreContainer.ContainerInputData.PersonContact.ContactList = _ContactList;
+        
     }
     
     // region *** button logic ***
@@ -74,11 +77,12 @@ export class PersonContactContainerComponent extends LayoutAbstraction.Class.Con
             }
         ];
         
+        
         if (this.coreContainer.ContainerInputData.PersonContact.isValid(this.personValidatorList)) {
             
             this.coreContainer.ContainerInputData.PersonContact.create().then(resp => {
-                
-                this.router.navigate(['/adresar']);
+    
+                this.router.navigate([this.inputData.ContainerInputData.RedirectTo]);
                 
             });
             
@@ -103,14 +107,31 @@ export class PersonContactContainerComponent extends LayoutAbstraction.Class.Con
                 IsValid         : false
             }
         ];
-        
+    
+    
         if (this.coreContainer.ContainerInputData.PersonContact.isValid(this.personValidatorList)) {
+        
+            this.coreContainer.ContainerInputDataReference.PersonContact.copyValuesFrom(this.coreContainer.ContainerInputData.PersonContact);
+        
+            const promises = [];
+        
+            this.coreContainer.ContainerInputDataReference.PersonContact.ContactList.forEach(contact => {
             
-            this.coreContainer.ContainerInputData.PersonContact.update().then(resp => {
-                this.router.navigate(['/adresar']);
+                contact.PersonID = this.coreContainer.ContainerInputDataReference.PersonContact.ID;
+                if (contact.ID) {
+                    promises.push(contact.update());
+                } else {
+                    promises.push(contact.create());
+                }
             });
+        
+            promises.push(this.coreContainer.ContainerInputDataReference.PersonContact.update());
+        
+            Promise.all(promises).then((response) => {
             
-            
+                this.router.navigate([this.inputData.ContainerInputData.RedirectTo]);
+            });
+        
         } else {
             this.formIsNotValidAlert();
             

@@ -1,4 +1,4 @@
-import {animate, state, style, transition, trigger} from '@angular/animations';
+import {animate, query, state, style, transition, trigger} from '@angular/animations';
 
 export const fadeInOut = (_OpacityMin = 0, _OpacityMax = 1) => {
     
@@ -61,4 +61,38 @@ export const additionalDivExpand =
                      })),
                      transition('false => true', animate('.5s 0ms cubic-bezier(0.895, 0.03, 0.685, 0.22)')),
                      transition('true => false', animate('.5s 0ms cubic-bezier(0.165, 0.84, 0.44, 1)'))
+                 ]);
+
+
+export const fadeAnimation =
+    
+                 trigger('fadeAnimation', [
+        
+                     transition('* => *', [
+            
+                         query(':enter',
+                             [
+                                 style({opacity: 0})
+                             ],
+                             {optional: true}
+                         ),
+            
+                         query(':leave',
+                             [
+                                 style({opacity: 1}),
+                                 animate('0.8s', style({opacity: 0}))
+                             ],
+                             {optional: true}
+                         ),
+            
+                         query(':enter',
+                             [
+                                 style({opacity: 0}),
+                                 animate('0.8s', style({opacity: 1}))
+                             ],
+                             {optional: true}
+                         )
+        
+                     ])
+    
                  ]);

@@ -1,12 +1,14 @@
 import {NgModule} from '@angular/core';
 import {CommonModule} from '@angular/common';
 import {AlertBlockSnippetComponent} from './alert-block/alert-block.snippet';
+import {PageLoaderComponent} from './page-loader/page-loader.component';
 
 
 @NgModule({
-    declarations: [AlertBlockSnippetComponent],
+    declarations: [AlertBlockSnippetComponent, PageLoaderComponent],
     exports     : [
-        AlertBlockSnippetComponent
+        AlertBlockSnippetComponent,
+        PageLoaderComponent
     ],
     imports     : [
         CommonModule

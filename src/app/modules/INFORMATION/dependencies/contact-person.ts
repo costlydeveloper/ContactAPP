@@ -16,13 +16,15 @@ export namespace InformationDependenciesPersonContact {
         
         export interface IListCore {
             PersonContactList: INFORMATION.Interface.Contact.IPersonContact[];
-            
+            FavoriteRelationList: INFORMATION.Interface.FavoriteContact.IBasic[];
+    
+    
             remove(_Item: INFORMATION.Interface.Contact.IPersonContact): void;
-            
+    
             modifyCreate(_Type: 'edit' | 'create', _Item?: INFORMATION.Interface.Contact.IPersonContact): void;
-            
-            dataFetch(_CurrencyRateID?: number): Promise<this>;
-            
+    
+            dataFetch(_UserID: string): Promise<this>;
+    
         } // class ContactListCore
         
         export interface IContactDialog {
@@ -41,22 +43,23 @@ export namespace InformationDependenciesPersonContact {
         
         export interface IContainerInputData {
             PersonContact: INFORMATION.Interface.Contact.IPersonContact;
-            CustomData: any;
+            RedirectTo: string;
         } // interface IContainerInputData
         
         
     } // namespace Interface
     
     export namespace Class {
-        
+    
         export class ListCore implements InformationDependenciesPersonContact.Interface.IListCore {
-            
-            PersonContactList: INFORMATION.Interface.Contact.IPersonContact[] = [];
-            
+        
+            PersonContactList: INFORMATION.Interface.Contact.IPersonContact[]    = [];
+            FavoriteRelationList: INFORMATION.Interface.FavoriteContact.IBasic[] = [];
+        
             remove(_Item: INFORMATION.Interface.Contact.IPersonContact): void {
-                
+            
                 const loggedUserPermissionService: LoggedUserPermissionsService = ServiceLocator.injector.get(LoggedUserPermissionsService);
-                
+            
                 if (_Item.ID === loggedUserPermissionService.getLoggedUser().Person.ID) {
                     const notificationPopups: DialogClass.Popups = new DialogClass.Popups();
                     notificationPopups.onToast({
@@ -86,33 +89,39 @@ export namespace InformationDependenciesPersonContact {
             }
             
             modifyCreate(_Type: 'edit' | 'create', _Item?: INFORMATION.Interface.Contact.IPersonContact): void {
-                
+    
                 const containerInput = new LayoutCommon.Class.ContainerInput<InformationDependenciesPersonContact.Interface.IContainerInputData>(
                     _Type, new InformationDependenciesPersonContact.Class.ContainerInputData()
                 );
-                
+    
                 if (_Item) {
                     containerInput.ContainerInputData.PersonContact = _Item;
                 }
-                
-                const router: Router = ServiceLocator.injector.get(Router);
+                const router: Router                         = ServiceLocator.injector.get(Router);
+                containerInput.ContainerInputData.RedirectTo = router.url;
+    
                 router.navigate(['/kontakt'], {state: containerInput});
-                
+    
             }
+        
+            async dataFetch(_UserID: string): Promise<this> {
             
-            async dataFetch(_CurrencyRateID?: number): Promise<this> {
-                
                 return await new Promise(resolve => {
-                    
-                    const personContact        = new INFORMATION.Class.Contact.PersonContact();
-                    const personContactPromise = personContact.personContactList();
-                    
+                
+                    const personContact                                                      = new INFORMATION.Class.Contact.PersonContact();
+                    const personContactPromise                                               = personContact.personContactList();
+                    const basicFavoriteContact: INFORMATION.Interface.FavoriteContact.IBasic = new INFORMATION.Class.FavoriteContact.Basic();
+                    const queryFavoriteContact                                               = ref => ref.where('UserID', '==', _UserID);
+                    const basicFavoriteContactPromise                                        = basicFavoriteContact.list(queryFavoriteContact);
+                
                     const promises: [
                         Promise<INFORMATION.Interface.Contact.IPersonContact[]>,
-                    ] = [personContactPromise];
-                    
+                        Promise<INFORMATION.Interface.FavoriteContact.IBasic[]>,
+                    ] = [personContactPromise, basicFavoriteContactPromise];
+                
                     Promise.all(promises).then((response) => {
-                        this.PersonContactList = response[0];
+                        this.PersonContactList    = response[0];
+                        this.FavoriteRelationList = response[1];
                         resolve(this);
                     });
                 });
@@ -167,15 +176,15 @@ export namespace InformationDependenciesPersonContact {
                     
                 });
             }
-            
+    
         }
-        
+    
         export class ContainerInputData implements InformationDependenciesPersonContact.Interface.IContainerInputData {
             PersonContact: INFORMATION.Interface.Contact.IPersonContact = new INFORMATION.Class.Contact.PersonContact();
-            CustomData: any                                             = null;
+            RedirectTo: string                                          = null;
         }
-        
-        
+    
+    
     } // namespace Class
     
-} // namespace InformationLayoutDependencies
+} // namespace InformationDependenciesPersonContact

@@ -1,0 +1,88 @@
+@import '../../../../styles/variables';
+
+.user-card-full {
+  overflow: hidden
+  }
+
+.card {
+  border: none;
+  //background-color: transparent;
+  }
+
+.bg-grad {
+  background: linear-gradient(to right, $primary-color, $secondary-color)
+  }
+
+.user-profile {
+  padding: 20px 0
+  }
+
+.card-block {
+  padding: 1.25rem
+  }
+
+.m-b-25 {
+  margin-bottom: 25px
+  }
+
+
+h6 {
+  font-size: 14px
+  }
+
+.card .card-block p {
+  line-height: 25px
+  }
+
+@media only screen and (min-width: 1400px) {
+  p {
+    font-size: 14px
+    }
+  }
+
+.card-block {
+  padding: 1.25rem
+  }
+
+.b-b-default {
+  border-bottom: 1px solid $gray-300
+  }
+
+
+.card .card-block p {
+  line-height: 25px
+  }
+
+.m-b-10 {
+  margin-bottom: 10px
+  }
+
+.text-muted {
+  color: $text-color-secondary !important
+  }
+
+.b-b-default {
+  border-bottom: 1px solid $gray-300
+  }
+
+.f-w-600 {
+  font-weight: 600
+  }
+
+
+.m-t-40 {
+  margin-top: 20px
+  }
+
+.p-b-5 {
+  padding-bottom: 5px !important
+  }
+
+.m-b-10 {
+  margin-bottom: 10px
+  }
+
+.m-t-40 {
+  margin-top: 20px
+  }
+

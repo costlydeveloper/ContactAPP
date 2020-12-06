@@ -1,3 +1,6 @@
+import {AngularFirestore} from '@angular/fire/firestore';
+import {ServiceLocator} from '../library/data-operation/locator.service';
+
 export namespace Global {
     
     export namespace Interface {
@@ -62,7 +65,13 @@ export namespace Global {
                 
             } // interface IDataControl
             
-            export interface ICommonObjectMarkup extends IDataValidation, IDataOperations, IDataControl {
+            export interface IPrepareCRUD {
+                
+                prepareRemove(_Collection: string): Promise<this>;
+                
+            } // interface IPrepareCRUD
+            
+            export interface ICommonObjectMarkup extends IDataValidation, IDataOperations, IDataControl, Global.Interface.Data.IPrepareCRUD {
                 
                 ID: string;
                 CreatedDate: Date;
@@ -182,10 +191,23 @@ export namespace Global {
                 
             } // class CommonDataControl
             
-            export class CommonObjectMarkup extends Global.Class.Data.CommonDataControl {
+            export class CommonObjectMarkup extends Global.Class.Data.CommonDataControl implements Global.Interface.Data.IPrepareCRUD {
                 ID: string        = null;
                 CreatedDate: any  = null;
                 IsActive: boolean = true;
+                
+                async prepareRemove(_Collection: string): Promise<this> {
+                    
+                    return await new Promise((resolve, reject) => {
+                        
+                        const firestore: AngularFirestore = ServiceLocator.injector.get(AngularFirestore);
+                        
+                        firestore.collection(_Collection).doc(this.ID)
+                            .delete()
+                            .then(resp => resolve(this))
+                            .catch(error => reject(new Error('ERR')));
+                    });
+                }
             }
             
         } // namespace Data

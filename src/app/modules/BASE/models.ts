@@ -94,51 +94,48 @@ export namespace BASE {
                 async update(): Promise<BASE.Interface.Person.IBasic> {
                     
                     return await new Promise((resolve, reject) => {
-                        
+    
                         const firestore: AngularFirestore = ServiceLocator.injector.get(AngularFirestore);
                         const request                     = new BASE.Class.Person.CUD(this);
-                        firestore.collection('Person').doc(this.ID).update(JSON.parse(JSON.stringify(request))).then(resp => {
-                            return resolve(this);
-                        }).catch(error => {
-                            return reject(new Error('ERR'));
-                        });
+                        firestore.collection('Person')
+                            .doc(this.ID)
+                            .update(JSON.parse(JSON.stringify(request)))
+                            .then(resp => resolve(this))
+                            .catch(error => reject(new Error('ERR')));
                     });
                 }
-                
+    
                 async remove(): Promise<BASE.Interface.Person.IBasic> {
-                    
-                    return await new Promise((resolve, reject) => {
-                        
-                        const firestore: AngularFirestore = ServiceLocator.injector.get(AngularFirestore);
-                        
-                        firestore.collection('Person').doc(this.ID).delete().then(resp => {
-                            return resolve(this);
-                        }).catch(error => {
-                            return reject(new Error('ERR'));
-                        });
+        
+                    return await new Promise((resolve) => {
+                        this.prepareRemove('Person').then(() => resolve(this));
                     });
                 }
-                
-                async list<T>(_Criteria?: any): Promise<T[]> {
+    
+                async list<T>(_Criteria: any = null): Promise<T[]> {
                     return await new Promise((resolve, reject) => {
-                        
-                        const personList = [];
-                        
+            
                         const firestore: AngularFirestore = ServiceLocator.injector.get(AngularFirestore);
-                        
-                        const subscribe = firestore.collection('Person').valueChanges().subscribe(responseData => {
-                            
+            
+                        let collection = firestore.collection('Person');
+                        if (_Criteria) {
+                            collection = firestore.collection('Person', _Criteria);
+                        }
+            
+                        const personList = [];
+                        const subscribe  = collection.valueChanges().subscribe(responseData => {
+                
                             responseData.forEach((person) => {
                                 const basicItem = new BASE.Class.Person.Basic();
                                 basicItem.copyValuesFrom(person);
                                 personList.push(basicItem);
                             });
-                            
+                
                             subscribe.unsubscribe();
                             resolve(personList);
-                            
+                
                         });
-                        
+            
                     });
                 }
                 

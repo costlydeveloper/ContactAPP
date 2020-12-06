@@ -1,0 +1,84 @@
+@import '../../styles/pre-import';
+
+.container {
+  padding: 0 !important;
+  }
+
+.topnav {
+  overflow: hidden;
+  background-color: $gray-800;
+  }
+
+.topnav a {
+  font-size: 17px;
+  display: block;
+  float: left;
+  padding: 14px 16px;
+  text-align: center;
+  text-decoration: none;
+  color: $white;
+  }
+
+.topnav a:hover {
+  color: black;
+  background-color: $surface-d;
+  }
+
+.topnav a.active {
+  color: $primary-color-text;
+  background-color: $secondary-color;
+  }
+
+.topnav .icon {
+  display: none;
+  }
+
+.logo-block {
+  height: 40px;
+
+  img {
+    height: 45px;
+    margin: 3px;
+    }
+  }
+
+.logo-block-standard {
+  display: block;
+  float: left;
+  margin: 4px;
+  padding-left: 10px;
+  }
+
+.logo-block-small {
+  position: absolute;
+  left: 1px;
+  display: none;
+  float: right;
+  }
+
+@media screen and (max-width: 600px) {
+
+  .logo-block-standard {
+    display: none;
+    }
+  .logo-block-small {
+    display: block;
+    }
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    display: block;
+    float: right;
+    }
+
+  .topnav.responsive {position: relative;}
+  .topnav.responsive a.icon {
+    position: absolute;
+    top: 0;
+    right: 0;
+    }
+  .topnav.responsive a {
+    display: block;
+    float: none;
+    text-align: left;
+    }
+  }

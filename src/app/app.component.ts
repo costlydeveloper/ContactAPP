@@ -2,15 +2,15 @@ import {Component} from '@angular/core';
 import {DialogService} from './library/dialog-system/dialog-definition/dialog.service';
 import {ToastService} from './library/dialog-system/dialog-definition/toast.service';
 import {RouterOutlet} from '@angular/router';
-import {routerTransition} from './library/animation/route.animation';
 import {PrimeNGConfig} from 'primeng/api';
+import {fadeAnimation} from './library/animation/fade-in-out.animation';
 
 
 @Component({
     selector   : 'app-root',
     templateUrl: 'app.component.html',
     styleUrls  : ['./app.component.scss'],
-    animations : [routerTransition]
+    animations : [fadeAnimation]
 })
 
 export class AppComponent {
@@ -29,5 +29,4 @@ export class AppComponent {
     }
     
     
- 
 }

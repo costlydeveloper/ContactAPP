@@ -26,7 +26,8 @@ import {CommonModule} from '@angular/common';
     ],
     exports     : [
         DialogLoaderDirective,
-        InsertionDirective
+        InsertionDirective,
+        DefaultModalLoaderComponent
     ],
     providers   : [
         DialogService,

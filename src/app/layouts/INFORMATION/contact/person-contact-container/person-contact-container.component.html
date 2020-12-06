@@ -17,7 +17,7 @@
             <div class="row">
                 
                 <div class="col-md-6">
-                    <p class="text-center">Person</p>
+                    <p class="text-center mt-2">Person</p>
                     <app-person-form
                             (formObjectOutput)="formDataCollect($event)"
                             [formObjectInput]="this.coreContainer.ContainerInputData.PersonContact"
@@ -27,12 +27,12 @@
                 </div>
                 
                 <div class="col-md-6">
-                    <p class="text-center">Contact</p>
+                    <p class="text-center mt-2">Contact</p>
                     <div class="snippet-list-wrapper">
                         <div class="button-group-left">
                             <button class="btn btn-primary btn-sm" (click)="onModifyCreateContact('create')"><i class="fa fa-plus"> Add contact</i></button>
                         </div>
-                        <app-snippet-contact-list [triggerChange]="triggerSnippetContactListChange" [contactList]="coreContainer.ContainerInputData.PersonContact.ContactList"></app-snippet-contact-list>
+                        <app-snippet-contact-list (contactListOutput)="updateContactList($event)" [triggerChange]="triggerSnippetContactListChange" [contactList]="coreContainer.ContainerInputData.PersonContact.ContactList"></app-snippet-contact-list>
                     </div>
                 </div>
             
@@ -50,4 +50,5 @@
         </div>
     
     </div>
+
 </div>

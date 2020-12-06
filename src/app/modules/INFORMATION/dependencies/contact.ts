@@ -1,6 +1,4 @@
 import {INFORMATION} from '../models';
-
-// @ts-ignore
 import ContactCategoryList from '../../../../assets/json/contact-category-list.json';
 
 

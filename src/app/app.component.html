@@ -1,19 +1,4 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
-<!--<router-outlet></router-outlet>-->
-<!--
-d
-<ul>
-  <li *ngFor="let it of itemList | async">
-    {{ it | json }}
-  </li>
-</ul>
-
-i: {{ item | json }}
--->
 <div id="toast-wrapper"></div>
-<div [@routeAnimations]="getRouterOutletState(outlet)">
+<div [@fadeAnimation]="getRouterOutletState(outlet)">
     <router-outlet #outlet="outlet" (activate)="onRouterOutletActivate($event)"></router-outlet>
-    <br class="clearfix"/>
-    <!-- <br class="clearfix" style="clear: both!important"/>-->
 </div>

@@ -9,9 +9,23 @@
   }
 
 .wrapper-block-page {
-  padding: 40px 20px 20px 20px;
+  min-height: 82vh;
+  padding: 0;
   border-top: 4px solid $gray-600;
   border-radius: 5px;
   background: $gray-100;
   box-shadow: 0 0 4px -2px $gray-800;
   }
+
+img.avatar {
+  border-radius: 50%;
+  }
+
+
+/*
+@media screen and (max-width: 720px) {
+  .wrapper-block-page {
+    padding: 0 0 20px 0;
+    }
+  }
+*/

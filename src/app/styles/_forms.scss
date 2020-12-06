@@ -1,7 +1,7 @@
 @import 'variables';
 
 .form-wrapper {
-  padding: 5px 10px;
+  padding: 5px 10px !important;
 
   .form-control, .form-control:focus, .input-group-addon {
     border-color: $gray-300;

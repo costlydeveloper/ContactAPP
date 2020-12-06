@@ -1,4 +1,4 @@
-<p-table #table [value]="contactList" [paginator]="true" [rows]="5">
+<p-table #table [value]="contactList" [paginator]="true" [rows]="5" [alwaysShowPaginator]="false">
     <ng-template pTemplate="body" let-contact>
         <tr>
             <td class="w-20px">
@@ -12,9 +12,9 @@
                 ></i></span>
             </td>
             <td>{{contact.Title}}</td>
-            <td class="w-120px">
+            <td class="w-120px" *ngIf="!isStatic">
                 <button class="btn-light btn btn-circle btn-ico" pRipple (click)="onModifyContact(contact)"><i class="fa fa-pencil" aria-hidden="true"></i></button>
-                <button class="btn-light btn btn-circle btn-ico" pRipple><i class="fa fa-trash" aria-hidden="true"></i></button>
+                <button class="btn-light btn btn-circle btn-ico" pRipple (click)="onRemoveContact(contact)"><i class="fa fa-trash" aria-hidden="true"></i></button>
             </td>
         
         </tr>

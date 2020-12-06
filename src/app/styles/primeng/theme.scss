@@ -372,7 +372,7 @@ p-calendar.ng-dirty.ng-invalid > .p-calendar > .p-inputtext {
   box-shadow: 0 0 0 0.2rem lighten($primary-color, 20);
   }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 720px) {
   .p-datepicker table th, .p-datepicker table td {
     padding: 0;
     }
@@ -901,6 +901,7 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
 .p-inputtext {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
   font-size: 1rem;
+  width: auto;
   padding: 0.5rem 0.5rem;
   transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
   color: $text-color;
@@ -908,6 +909,12 @@ p-inputswitch.ng-dirty.ng-invalid > .p-inputswitch {
   border-radius: 3px;
   background: #ffffff;
   appearance: none;
+  }
+
+@media screen and (max-width: 540px) {
+  .p-inputtext {
+    width: 100%;
+    }
   }
 
 .p-inputtext:enabled:hover {
@@ -2161,6 +2168,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   border: 1px solid $surface-c;
   border-width: 0 0 1px 0;
   background: $surface-b;
+
   }
 
 .p-datatable .p-datatable-tfoot > tr > td {
@@ -3010,7 +3018,7 @@ p-togglebutton.ng-dirty.ng-invalid > .p-togglebutton.p-button {
   color: $text-color;
   }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 720px) {
   .p-picklist {
     flex-direction: column;
     }
