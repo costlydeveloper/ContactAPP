@@ -21,14 +21,14 @@
                         <div class="text-right">
                             <i class="fa fa-search"></i>
                             <input class="filter" type="text" pInputText size="30" placeholder="Search" (keyup)="myFilter($event.target.value)">
-                            <p-dropdown *ngIf="PersonContactList.length > row" [(ngModel)]="row" [options]="rowNumber" placeholder="">
+                            <p-dropdown *ngIf="PersonContactList.length > row" [(ngModel)]="row" [options]="rowNumber">
                             </p-dropdown>
                         </div>
                     </ng-template>
                     <ng-template pTemplate="header">
                         
                         <tr>
-                            <th class="w-20" pSortableColumn="Surname">
+                            <th class="w-30 max-200 min-100" pSortableColumn="Surname">
                                 <div class="inline-content">
                                     <div>Surname</div>
                                     <div>
@@ -36,10 +36,10 @@
                                     </div>
                                 </div>
                             </th>
-                            <th class="w-20">
+                            <th class="w-30  max-200 min-100">
                                 Name
                             </th>
-                            <th class="w-40 text-right">
+                            <th class="w-30 text-right">
                                 Contacts
                             </th>
                         </tr>
@@ -50,12 +50,12 @@
                         
                         <tr [pSelectableRow]="item">
                             <td class="pointer table-link-color" [routerLink]="['/kontakt/detalji', item.ID]">
-                                <div class="trim max-200 min-100">
+                                <div class="trim">
                                     {{item.Surname}}
                                 </div>
                             </td>
                             <td class="pointer table-link-color" [routerLink]="['/kontakt/detalji', item.ID]">
-                                <div class="trim max-200 min-100">
+                                <div class="trim">
                                     {{item.Name}}
                                 </div>
                             </td>
